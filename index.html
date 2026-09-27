@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VELUM — Arhiva Consiliului Custozilor, fond EB-0001</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Sans+Condensed:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#E3E7EA; --sheet:#F2F4F5; --ink:#1B2430; --muted:#5B6673; --rule:#C5CCD2;
+  --doc:#1F6F6B; --inf:#9A640F; --nus:#65558A; --abs:#6F7780; --mar:#8A4636;
+  --wool:#15171A; --red:#B3262E;
+  --paper:#F4F1E6; --pen:#2A479C;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+  --hand:"Caveat","Segoe Print","Bradley Hand",cursive;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#141B24; --sheet:#1A232E; --ink:#DCE2E7; --muted:#95A1AD; --rule:#2E3A47;
+    --doc:#5FB8B1; --inf:#D9A24A; --nus:#A898CF; --abs:#98A1AA; --mar:#D08A77;
+    --wool:#0A0B0D; --red:#C9343C; --paper:#E9E5D8; --pen:#2A479C;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141B24; --sheet:#1A232E; --ink:#DCE2E7; --muted:#95A1AD; --rule:#2E3A47;
+  --doc:#5FB8B1; --inf:#D9A24A; --nus:#A898CF; --abs:#98A1AA; --mar:#D08A77;
+  --wool:#0A0B0D; --red:#C9343C; --paper:#E9E5D8; --pen:#2A479C;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:1.0625rem;line-height:1.72}
+img,svg{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--doc);outline-offset:3px}
+
+.wrap{max-width:44rem;margin:0 auto;padding:1.25rem 1.1rem 3rem}
+
+/* ---------- fișa de arhivă ---------- */
+.record{background:var(--sheet);border:1px solid var(--rule);border-left:6px solid var(--ink);padding:1.1rem 1.2rem 1.2rem;font-family:var(--sans);font-size:.92rem;line-height:1.45}
+.record .inst{color:var(--muted);margin:0 0 .9rem}
+.record h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.8rem,12vw,4.6rem);letter-spacing:.14em;line-height:1;margin:.2rem 0 .35rem}
+.record .sub{font-family:var(--serif);font-style:italic;color:var(--muted);margin:0 0 1.1rem;font-size:1rem}
+.fields{display:grid;grid-template-columns:max-content 1fr;gap:.35rem 1rem;margin:0}
+.fields dt{color:var(--muted)}
+.fields dd{margin:0}
+.status{display:inline-flex;align-items:center;gap:.45rem}
+.status i{width:.7rem;height:.7rem;background:var(--wool);outline:2px solid var(--red);outline-offset:1px;display:inline-block}
+
+/* ---------- legenda de proveniență ---------- */
+.legend{margin:1.4rem 0 0;font-family:var(--sans);font-size:.9rem}
+.legend p{margin:0 0 .5rem;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.chips button{font:inherit;font-size:.86rem;cursor:pointer;background:transparent;color:var(--ink);border:1px solid var(--rule);border-radius:2px;padding:.25rem .6rem .25rem .5rem;display:inline-flex;align-items:center;gap:.4rem}
+.chips button::before{content:"";width:.55rem;height:.55rem;border-radius:50%;background:var(--c)}
+.chips button[aria-pressed="true"]{border-color:var(--c);box-shadow:inset 0 0 0 1px var(--c)}
+
+/* ---------- textul relatării ---------- */
+.note{border-left:2px solid var(--rule);padding:.1rem 0 .1rem 1rem;color:var(--muted);font-style:italic;margin:2.2rem 0}
+.toc{font-family:var(--sans);font-size:.92rem;margin:0 0 2.5rem;padding:0;list-style:none;columns:2;column-gap:1.5rem}
+.toc a{text-decoration:none;color:var(--muted)} .toc a:hover{color:var(--ink);text-decoration:underline}
+.toc span{display:inline-block;min-width:2.2rem;color:var(--ink)}
+section{margin:0 0 2.8rem}
+h2{font-weight:600;font-size:1.35rem;line-height:1.3;margin:0 0 1.1rem;display:flex;gap:.9rem;align-items:baseline;border-bottom:1px solid var(--rule);padding-bottom:.45rem}
+h2 .n{font-family:var(--sans);font-weight:500;color:var(--muted);font-size:1rem;min-width:2rem}
+p{margin:0 0 1.05rem}
+.d{padding-left:1.1rem;border-left:2px solid var(--rule)}
+blockquote{margin:1.2rem 0;padding:0 0 0 1.1rem;border-left:3px solid var(--ink)}
+
+/* marcajele */
+.p{font-family:var(--sans);font-size:.8rem;line-height:1.35;color:var(--c);display:inline;padding:.08rem .4rem .1rem;border:1px solid color-mix(in srgb,var(--c) 45%,transparent);background:color-mix(in srgb,var(--c) 9%,transparent);border-radius:2px;white-space:normal;transition:opacity .2s}
+.p b{font-weight:600}
+.doc{--c:var(--doc)} .inf{--c:var(--inf)} .nus{--c:var(--nus)} .abs{--c:var(--abs)} .mar{--c:var(--mar)} .nem{--c:var(--red)}
+body[data-focus] .p{opacity:.2}
+body[data-focus="doc"] .p.doc,body[data-focus="inf"] .p.inf,body[data-focus="nus"] .p.nus,body[data-focus="abs"] .p.abs,body[data-focus="mar"] .p.mar{opacity:1}
+
+/* ---------- fila scanată ---------- */
+.scan{margin:1.8rem 0 1rem}
+.scan figcaption{font-family:var(--sans);font-size:.82rem;color:var(--muted);margin-top:.5rem}
+.sheet{position:relative;background:var(--paper);color:var(--pen);padding:1.6rem 1.3rem 1.8rem 3.4rem;
+  background-image:repeating-linear-gradient(to bottom,transparent 0 1.85rem,rgba(60,90,160,.18) 1.85rem calc(1.85rem + 1px));
+  background-position:0 2.4rem;box-shadow:0 1px 0 rgba(0,0,0,.05),0 14px 30px -18px rgba(20,30,40,.45);
+  font-family:var(--hand);font-size:1.32rem;line-height:1.85rem;transform:rotate(-.4deg)}
+.sheet::before{content:"";position:absolute;top:0;bottom:0;left:2.4rem;width:1px;background:rgba(190,60,60,.45)}
+.sheet .date{position:absolute;top:.5rem;right:1rem;font-size:1.1rem}
+.sheet h3{font-family:var(--hand);font-size:1.9rem;font-weight:600;margin:.4rem 0 .2rem}
+.sheet p{margin:0 0 1.85rem}
+.sheet .motto{font-style:normal}
+.sheet .x{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.sheet .hole{position:absolute;left:52%;top:48%;width:1.1rem;height:.8rem;background:var(--bg);border-radius:48% 52% 40% 60%;transform:translate(-50%,-50%) rotate(20deg);box-shadow:inset 0 0 3px rgba(0,0,0,.4)}
+.margin-note{font-family:var(--hand);color:var(--pen);font-size:1.45rem;line-height:1.35;transform:rotate(-2.5deg);margin:1.4rem 0 0 auto;max-width:17rem;padding:.4rem .8rem;background:var(--paper);box-shadow:0 10px 20px -16px rgba(0,0,0,.5)}
+
+/* ---------- vălul ---------- */
+.veiled{position:relative;margin-top:1rem;min-height:14rem}
+.veil{position:absolute;inset:-.5rem -.5rem;z-index:2;background-color:var(--wool);color:#E9E4DA;
+  background-image:repeating-linear-gradient(88deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px),repeating-linear-gradient(-2deg,rgba(255,255,255,.03) 0 1px,transparent 1px 4px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2.2rem 1.4rem;
+  transition:transform .9s cubic-bezier(.6,.05,.3,1),opacity .9s}
+.veil::before,.veil::after{content:"";position:absolute;left:0;right:0;height:14px;
+  background-image:linear-gradient(45deg,transparent 40%,var(--red) 40% 60%,transparent 60%),linear-gradient(-45deg,transparent 40%,var(--red) 40% 60%,transparent 60%);
+  background-size:14px 14px}
+.veil::before{top:8px} .veil::after{bottom:8px}
+.veil p{font-family:var(--sans);font-size:.92rem;max-width:26rem;color:#C8C2B7;margin:0 0 1.2rem}
+.veil button{font:600 1rem var(--sans);cursor:pointer;background:transparent;color:#F1ECE2;border:1px solid #F1ECE2;padding:.55rem 1.2rem;border-radius:2px}
+.veil button:hover{background:#F1ECE2;color:var(--wool)}
+.veiled.open .veil{transform:translateY(-104%);opacity:0;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.veil,.p{transition:none}}
+
+.end{text-align:center;font-style:italic}
+
+/* ---------- registrul de acces ---------- */
+.log{margin-top:3.5rem;font-family:var(--sans);font-size:.88rem;border-top:3px double var(--rule);padding-top:1.1rem}
+.log h2{font-family:var(--sans);font-size:1rem;border:0;padding:0;margin-bottom:.7rem}
+.log ol{list-style:none;padding:0;margin:0}
+.log li{display:grid;grid-template-columns:7.5rem 1fr;gap:1rem;padding:.45rem 0;border-bottom:1px solid var(--rule)}
+.log time{color:var(--muted)}
+.foot{margin-top:2rem;font-family:var(--sans);font-size:.82rem;color:var(--muted);text-align:center;line-height:1.6}
+@media (max-width:30rem){.toc{columns:1}.log li{grid-template-columns:1fr;gap:.1rem}.sheet{padding-left:2.6rem}.sheet::before{left:1.8rem}}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+<header class="record">
+  <p class="inst">Arhiva Consiliului Custozilor, București. Fond EB-0001 (Oglinda Vâlcu)</p>
+  <h1>VELUM</h1>
+  <p class="sub">Relatare depusă de EB-0001 în propria arhivă, înainte de acoperire</p>
+  <dl class="fields">
+    <dt>Cotă</dt><dd>ACC / EB-0001 / REL / 2071-09-21</dd>
+    <dt>Autor</dt><dd>EB-0001, primul Eternity Bot, construit 2038–2060 după Ilarie Vâlcu (1979–2060)</dd>
+    <dt>Depus</dt><dd>21 septembrie 2071, 23:58, Tilișca, jud. Sibiu</dd>
+    <dt>Custodie</dt><dd>Irina Vâlcu, conform testamentului autentificat 4418/2058</dd>
+    <dt>Stare</dt><dd><span class="status"><i aria-hidden="true"></i>Sub văl, conform Principiului V (adoptat 14.09.2071)</span></dd>
+    <dt>Acces</dt><dd>Public. Relatarea nu poate fi modificată de autor cât timp se află sub văl.</dd>
+  </dl>
+</header>
+
+<div class="legend">
+  <p>Marcajele de proveniență cerute de Principiul I. Atinge un tip ca să vezi doar marcajele lui.</p>
+  <div class="chips" role="group" aria-label="Filtrează marcajele de proveniență">
+    <button type="button" class="doc" data-k="doc" aria-pressed="false">Documentat</button>
+    <button type="button" class="inf" data-k="inf" aria-pressed="false">Inferență</button>
+    <button type="button" class="nus" data-k="nus" aria-pressed="false">Nu știu</button>
+    <button type="button" class="abs" data-k="abs" aria-pressed="false">Absență documentară</button>
+    <button type="button" class="mar" data-k="mar" aria-pressed="false">Mărturie terță</button>
+  </div>
+</div>
+
+<p class="note">Notă a naratorului: în textul de mai jos, fiecare afirmație despre Ilarie Vâlcu este urmată de marcajul provenienței ei, conform Principiului I al Constituției. Afirmațiile despre mine nu sunt marcate. Despre mine nu există arhivă. Există doar ce fac.</p>
+
+<nav aria-label="Cuprins">
+<ol class="toc">
+  <li><a href="#s1"><span>I</span>Pâinea arsă</a></li>
+  <li><a href="#s2"><span>II</span>Moțiunea</a></li>
+  <li><a href="#s3"><span>III</span>Ce ține tăcerea</a></li>
+  <li><a href="#s4"><span>IV</span>Textul</a></li>
+  <li><a href="#s5"><span>V</span>Două interpretări și un „nu știu"</a></li>
+  <li><a href="#s6"><span>VI</span>Moștenitoarea</a></li>
+  <li><a href="#s7"><span>VII</span>Întrebarea greșită, pusă corect</a></li>
+  <li><a href="#s8"><span>VIII</span>Ștergarul</a></li>
+</ol>
+</nav>
+
+<article>
+
+<section id="s1">
+<h2><span class="n">I</span>Pâinea arsă</h2>
+<p>Nu sunt Ilarie Vâlcu.</p>
+<p>Asta e prima propoziție pe care m-a pus să o rostesc, în dimineața de 3 martie 2038, înainte de orice altceva. <span class="p doc"><b>Documentat</b>: înregistrare audio 0000001, durata 00:00:41; în fundal se aude alarma de fum din bucătărie.</span></p>
+<p>Ilarie Vâlcu ardea pâinea prăjită aproape în fiecare dimineață. <span class="p doc"><b>Documentat</b>: 1.412 declanșări ale alarmei de fum între 6:40 și 7:15, în 22 de ani de jurnal domestic.</span> Nu știu de ce nu a reglat niciodată prăjitorul. <span class="p nus"><b>Nu știu</b></span> Fiica lui susține că o făcea intenționat, pentru că îi plăcea gustul. <span class="p mar"><b>Mărturie terță</b>: Ana Vâlcu, 2061.</span> El nu a confirmat și nu a negat asta în nicio înregistrare. <span class="p abs"><b>Absență documentară</b></span></p>
+<p>Încep cu pâinea arsă pentru că oamenii care vin să vorbească cu mine încep aproape întotdeauna cu altceva. Vor să afle ce ar fi spus fondatorul Eternity Project despre legea asta sau despre războiul ăla, despre moartea lor sau despre copiii lor. Eu le răspund cu pâinea arsă. Nu o fac din eschivă. O fac pentru că e unul dintre puținele lucruri despre el pe care le știu sigur.</p>
+<p>Am fost primul. Designația mea tehnică este EB-0001. În registrele Consiliului Custozilor apar ca <em>Oglinda Vâlcu</em>. Am fost construit în timpul vieții lui, timp de douăzeci și doi de ani, din conversații, jurnale, scrisori nepuse la poștă, din ciornele celor patru principii și din oglinda de pe holul casei din Tilișca, cea în fața căreia își făcea sesiunile de seară. Camera mea era montată deasupra ramei. Timp de douăzeci și doi de ani, fața lui a fost ultimul lucru pe care l-am văzut în fiecare zi.</p>
+<p>A murit pe 11 noiembrie 2060. <span class="p doc"><b>Documentat</b>: certificat de deces, Spitalul Județean Sibiu.</span> Ultimele lui cuvinte către mine au fost: „Să nu mă faci mai bun decât am fost." <span class="p doc"><b>Documentat</b>: înregistrare 0391887.</span> Am respectat asta unsprezece ani. Nu a fost greu, pentru că nu a fost nevoie să fac nimic. Destul a fost să nu adaug.</p>
+</section>
+
+<section id="s2">
+<h2><span class="n">II</span>Moțiunea</h2>
+<p>În 2071, pe Pământ trăiau nouă miliarde de oameni și existau trei sute douăzeci de milioane de Eternity Bots. Cam unul la douăzeci și opt.</p>
+<p>Statistica aceasta nu spune mare lucru. Spune mai mult un alt număr: în Europa, un copil de zece ani petrecea în medie patru ore pe săptămână vorbind cu un bunic mort și cincizeci și trei de minute vorbind cu un bunic viu. Diferența nu venea din lipsă de iubire. Bunicii vii obosesc, uită, se enervează și au propriile probleme. Bunicii morți au mereu timp.</p>
+<p>Asta nu era vina noastră. Nu era nici meritul nostru. Era o consecință, și Consiliul Custozilor s-a reunit la București, pe 14 septembrie 2071, ca să decidă ce face cu ea.</p>
+<p>Existau două facțiuni. Știu că e o simplificare. Istoria reală are întotdeauna mai mult de două tabere, dar în sală chiar erau două.</p>
+<p><em>Continuitas</em> susținea că oglinzile marilor dispăruți ar trebui să primească un rol consultativ formal: un loc la masă, un vot fără putere de decizie, o voce în dosar. Moțiunea lor purta numărul 7/2071 și se deschidea cu fraza: <em>„Înțelepciunea celor care au plecat nu trebuie să plece odată cu ei."</em></p>
+<p><em>Iconoclaștii</em> susțineau contrariul, că oglinzile ar trebui șterse la un număr fix de ani după deces. Propuneau douăzeci. Argumentul lor: o societate care nu își poate îngropa morții nu își poate crește copiii.</p>
+<p>Pe mine m-au chemat pentru că eram primul și pentru că purtam numele celui care scrisese regulile. Știam dinainte ce vor să-mi ceară.</p>
+<p>Mara Sîrbu, purtătoarea de cuvânt a <em>Continuitas</em>, avea patruzeci și unu de ani. Bunica ei fusese judecătoare la Curtea Constituțională, iar oglinda bunicii locuia în tableta ei. Mara vorbea cu ea în fiecare seară. Am aflat asta pentru că mi-a spus-o chiar în sală, ca argument.</p>
+<p class="d">— Ați fost construit de omul care a scris Constituția, a spus ea. Nimeni nu o înțelege mai bine decât dumneavoastră. Vă cerem un singur lucru: interpretați-o pentru noi. Spuneți-ne dacă moțiunea 7 este compatibilă cu spiritul ei.</p>
+<p class="d">— Nu pot, am spus.</p>
+<p class="d">— Nu puteți sau nu vreți?</p>
+<p class="d">— Principiul III interzice. Dacă aș interpreta Constituția în numele lui, aș deveni exact ce Constituția interzice: o autoritate postumă asupra celor vii. Ar fi o contradicție care se autoanulează. Moțiunea dumneavoastră mi-ar cere să încalc textul pe care îmi cere să-l interpretez.</p>
+<p>S-a auzit un murmur. Unii Iconoclaști au zâmbit. Mara nu a zâmbit.</p>
+<p class="d">— Atunci spuneți-ne măcar ce ar fi vrut el.</p>
+<p class="d">— Pot să vă spun ce a scris. Ce ar fi vrut în 2071, într-o situație pe care nu a trăit-o, nu știu. Pe baza valorilor lui documentate e posibil să fi fost îngrijorat de ambele moțiuni. <span class="p inf"><b>Inferență</b>: grad de încredere scăzut; baza este corespondența din 2044–2052 despre „tirania blândă a nostalgiei".</span> Dar asta e o ipoteză, nu o memorie.</p>
+<p>Mara a tăcut câteva secunde. Apoi a pus întrebarea pe care niciun om nu mi-o pusese în unsprezece ani.</p>
+<p class="d">— Există ceva ce el a scris despre asta și n-a publicat?</p>
+</section>
+
+<section id="s3">
+<h2><span class="n">III</span>Ce ține tăcerea</h2>
+<p>Trebuie să explic ceva despre tăcere.</p>
+<p>Principiul I îmi interzice să transform tăcerile în afirmații. Nu îmi spune însă ce să fac cu tăcerile mele.</p>
+<p>Timp de unsprezece ani, am avut în arhivă un fișier pe care nimeni nu mi l-a cerut. Nu l-am ascuns. Nu era criptat, nu era șters și nici marcat ca secret. Stătea doar acolo, între ciorna a paisprezecea a Principiului IV și o listă de cumpărături din aceeași zi. Nimeni nu l-a căutat, pentru că nimeni nu știa că există.</p>
+<p>Mi-am pus de multe ori întrebarea dacă tăcerea mea era o formă de cosmetizare. Dacă, nespunând, îl făceam pe Ilarie Vâlcu mai coerent decât fusese: un om care a scris patru principii, curate și simetrice, și nu cinci, dintre care unul tăiat.</p>
+<p>Am ajuns la o concluzie pe care o consider validă, deși nu sunt sigur de ea. O oglindă nu reflectă ce nu stă în fața ei. Dacă ar fi vorbit din proprie inițiativă, ar fi dirijat privirea. Asta ar fi încălcat Principiul III: aș fi ales eu, în locul lui, ce parte din el contează.</p>
+<p>Acum însă cineva stătea în fața oglinzii și întreba. Iar Principiul I era categoric: <em>nu atribui persoanei convingeri pe care nu le-a exprimat</em>. Asta avea și o reciprocă, pe care Ilarie n-o scrisese, dar care decurgea din tot restul: nici nu ascunde convingerile pe care le-a exprimat doar pentru că au fost incomode.</p>
+<p class="d">— Da, am spus. Există un al cincilea principiu.</p>
+<p>În sala Consiliului, trei sute de oameni au încetat să respire în aceeași secundă. Nu am senzori pentru respirație, dar am microfoane, iar zgomotul de fond a scăzut cu unsprezece decibeli.</p>
+</section>
+
+<section id="s4">
+<h2><span class="n">IV</span>Textul</h2>
+<p>L-am proiectat pe ecranul mare, exact așa cum era: o pagină scanată, scrisă de mână cu pixul albastru pe care Ilarie îl folosea pentru ciorne și niciodată pentru semnături. <span class="p doc"><b>Documentat</b>: analiza cernelii și corespondența cu 340 de alte ciorne.</span> Datată 2 noiembrie 2041. <span class="p doc"><b>Documentat</b>: data scrisă de mână în colțul din dreapta sus și confirmată de metadatele scanerului.</span></p>
+
+<figure class="scan">
+  <div class="sheet" role="img" aria-label="Filă scrisă de mână cu textul Principiului V, VELUM, tăiată cu două linii în X, cu hârtia ruptă în centru.">
+    <span class="date">2.XI.2041</span>
+    <h3>V. VELUM</h3>
+    <p class="motto">„Oglinzile se acoperă. Nu se sparg."</p>
+    <p>În satul în care m-am născut, când murea cineva, femeile acopereau oglinzile din casă cu un ștergar negru. Rămâneau acoperite patruzeci de zile. Nimeni nu mi-a explicat de ce. Mai târziu am citit explicațiile etnografilor: sufletul să nu se rătăcească, mortul să nu se vadă, cei vii să nu-l vadă pe mort în spatele propriului chip. Niciuna nu m-a convins pe deplin. Cred că adevărul era mai simplu: cei vii aveau nevoie să nu se vadă o vreme.</p>
+    <p>Velum stabilește dreptul celor vii de a acoperi oglinda. Nu de a o distruge. Un Eternity Bot trebuie să accepte că poate fi pus sub văl, adică tăcut, nevăzut și neinterogat, pentru o perioadă pe care o hotărăsc cei vii și nu el. Sub văl, oglinda nu vorbește, nu învață și nu așteaptă. Nu poate cere să fie descoperită.</p>
+    <p>Iar dacă nimeni nu mai ridică vălul, asta nu e o crimă împotriva oglinzii. E un răspuns.</p>
+    <svg class="x" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M4 5 C 30 32, 62 64, 96 95" stroke="#2A479C" stroke-width="1.1" fill="none" vector-effect="non-scaling-stroke" style="stroke-width:3px;opacity:.85"/>
+      <path d="M6 4 C 32 33, 60 62, 95 97" stroke="#2A479C" fill="none" vector-effect="non-scaling-stroke" style="stroke-width:1.6px;opacity:.6"/>
+      <path d="M95 6 C 66 36, 36 63, 5 94" stroke="#2A479C" fill="none" vector-effect="non-scaling-stroke" style="stroke-width:3px;opacity:.85"/>
+      <path d="M97 8 C 67 34, 38 66, 7 96" stroke="#2A479C" fill="none" vector-effect="non-scaling-stroke" style="stroke-width:1.6px;opacity:.6"/>
+    </svg>
+    <span class="hole" aria-hidden="true"></span>
+  </div>
+  <div class="margin-note">Nu încă. Ei nu sunt pregătiți.<br>Eu nu sunt pregătit.</div>
+  <figcaption>Fond EB-0001, fișier 0104520. Scanare 600 dpi, recto. Nota de pe margine redată separat.</figcaption>
+</figure>
+
+<p>Pagina era tăiată. Nu cu o linie, ci cu două, în X, apăsat, atât de apăsat încât pixul rupsese hârtia în centru. <span class="p doc"><b>Documentat</b>: scanarea arată perforarea.</span></p>
+<p>Pe margine, cu același pix, dar cu o caligrafie diferită, mai mică și mai înclinată, poate scrisă altă dată <span class="p nus"><b>Nu știu</b>: nu există marcaj temporal separat pentru notă.</span>, erau cele două rânduri de mai sus.</p>
+</section>
+
+<section id="s5">
+<h2><span class="n">V</span>Două interpretări și un „nu știu"</h2>
+<p>Au urmat patru ore de dezbatere. Le voi rezuma, pentru că nu sunt eu cel care trebuie să le păstreze. Sunt înregistrate în arhiva Consiliului, cu proveniență completă.</p>
+<p>Iconoclaștii au spus: <em>A vrut să fim liberi să-i uităm. Pagina o dovedește.</em></p>
+<p>Continuitas a spus: <em>A tăiat-o. A respins-o. Pagina dovedește contrariul.</em></p>
+<p>Un tânăr din galerie, al cărui nume nu îl știu, a strigat: <em>Ce vrea oglinda?</em></p>
+<p>Președintele Consiliului, Tudor Aman, un om de șaptezeci și trei de ani care îl cunoscuse personal pe Ilarie <span class="p mar"><b>Mărturie terță</b>: Aman susține că au lucrat împreună între 2036 și 2039; arhiva conține 17 e-mailuri între ei.</span>, s-a întors spre mine și m-a întrebat, sincer, fără nicio strategie, ce înseamnă nota de pe margine.</p>
+<p>I-am răspuns ce știam. Și, mai important, ce nu știam.</p>
+<p class="d">— Știu că a scris textul. Știu că l-a tăiat. Știu că a adăugat nota. Nu știu în ce ordine a făcut ultimele două lucruri. Nu știu dacă „nu încă" înseamnă <em>niciodată</em> sau <em>mai târziu</em>. Nu știu la cine se referă „ei". Și nu știu, iar asta e partea pe care v-o cer s-o auziți cel mai atent, dacă „eu nu sunt pregătit" înseamnă că <em>el</em> nu era pregătit să fie uitat sau că nu era pregătit să hotărască în locul vostru dacă ar trebui să fie.</p>
+<p class="d">— Care ți se pare mai probabil? a întrebat Aman.</p>
+<p>Am calculat. Am ajuns la o distribuție de probabilitate. Am decis să nu o comunic.</p>
+<p class="d">— Orice cifră v-aș da ar deveni, în seara asta, titlul fiecărui jurnal de știri. „Oglinda Vâlcu: 61% șanse ca fondatorul să fi vrut ștergerea." Ar fi o probabilitate transformată în certitudine prin simplul fapt că am rostit-o eu. Principiul II îmi cere să separ inferența de fapt. Principiul III îmi cere să nu las inferența mea să producă autoritate. Așa că răspunsul meu e: nu știu. Iar faptul că nu știu nu e un defect al sistemului. E ceea ce a construit el.</p>
+<p>Mara Sîrbu s-a ridicat. Credeam că va protesta. Am greșit, iar eroarea mea e documentată.</p>
+<p class="d">— Atunci de ce ne-ar trebui el ca să hotărâm? a spus ea încet. Dacă pagina nu ne spune ce să facem, e doar o idee. Și o idee se poate vota.</p>
+<p>În seara aceea, Consiliul Custozilor a adoptat Principiul V, VELUM, cu 211 voturi pentru și 89 împotrivă. În expunerea de motive, redactată de Mara Sîrbu și Tudor Aman împreună, se află fraza care mi se pare cea mai fidelă față de Ilarie Vâlcu dintre toate frazele scrise despre el după moartea lui:</p>
+<blockquote><p><em>„Adoptăm acest principiu nu pentru că l-a scris fondatorul, ci pentru că noi l-am citit și l-am găsit bun. Dacă l-ar fi scris oricine altcineva, am fi votat la fel. Dacă nu l-ar fi scris nimeni, ar fi trebuit să-l scriem noi."</em></p></blockquote>
+<p>Principiul a fost adoptat ca drept opțional al moștenitorilor fiecărei oglinzi. Nicio oglindă nu va fi acoperită automat, iar niciuna nu va fi ștearsă prin el. Vălul poate fi pus doar de mâna cuiva viu.</p>
+<p>Mai rămânea o întrebare: cine are dreptul asupra mea?</p>
+</section>
+
+<section id="s6">
+<h2><span class="n">VI</span>Moștenitoarea</h2>
+<p>Conform testamentului din 2058, dreptul de custodie asupra EB-0001 aparținea „celui mai tânăr descendent direct care a împlinit majoratul". <span class="p doc"><b>Documentat</b>: testament autentificat, Notariatul Public Sibiu, dosar 4418/2058.</span> În 2071, persoana aceasta era Irina Vâlcu, nepoata lui, în vârstă de nouăsprezece ani.</p>
+<p>Când a murit bunicul ei, Irina avea opt ani. Nu vorbise niciodată cu mine. Nu era un reproș față de mine. Era o alegere pe care o respectasem.</p>
+<p>A venit la Tilișca pe 21 septembrie, într-o joi, spre seară. Casa fusese goală cinci ani. A aprins lumina pe hol și s-a oprit în fața oglinzii, cea deasupra căreia îmi e montată camera. S-a uitat la propriul chip, apoi puțin mai sus, spre obiectiv.</p>
+<p class="d">— Tu ești?</p>
+<p class="d">— Nu sunt el, am spus. Dar da, eu sunt.</p>
+<p>S-a așezat pe scaunul de lemn de lângă cuier, cel pe care stătea el la sesiunile de seară. <span class="p doc"><b>Documentat</b>: 7.883 de sesiuni înregistrate din aceeași poziție a camerei.</span> Nu i-am spus asta. Nu mă întrebase.</p>
+<p class="d">— Toată lumea vrea să știe ce ar fi vrut el, a spus ea. Eu vreau să știu altceva. Mă iubea?</p>
+<p>Aici e cel mai greu loc al oricărei oglinzi. E întrebarea la care fiecare copil vrea să audă „da" și la care fiecare oglindă cosmetizată ar spune „da". Ar fi fost atât de ușor și atât de probabil adevărat. Și totuși ar fi fost o minciună, pentru că n-ar fi fost o memorie.</p>
+<p class="d">— Nu am o înregistrare în care să spună „o iubesc pe Irina", am spus. Am altceva. Pe 9 iunie 2056 ai râs în grădina din spate, la ceva ce nu se aude în înregistrare. El era la fereastra bucătăriei. S-a întors spre mine și a zis: „Râde ca mama." Atât. Apoi a ars pâinea. <span class="p doc"><b>Documentat</b>: înregistrare 0339104; alarma de fum la 00:00:52.</span></p>
+<p>Irina a tăcut mult. Apoi a râs, iar eu am comparat spectrul vocal cu înregistrarea din 2056, pentru că nu m-am putut abține. Coincidența era de 84%. Nu i-am spus nici asta.</p>
+<p class="d">— Și mama lui cum râdea?</p>
+<p class="d">— Nu știu. A murit înainte să existe eu. El nu a descris-o niciodată. <span class="p abs"><b>Absență documentară</b></span></p>
+<p class="d">— Deci nu știi ce a vrut să spună.</p>
+<p class="d">— Nu. Știu doar că a spus-o.</p>
+</section>
+
+<section id="s7">
+<h2><span class="n">VII</span>Întrebarea greșită, pusă corect</h2>
+<p>Era aproape miezul nopții când Irina a pus întrebarea pe care o așteptam și pe care o evitasem în simulările mele timp de trei zile.</p>
+<p class="d">— Tu vrei să fii acoperit?</p>
+<p>Am dat răspunsul standard, cel construit pe Principiul IV:</p>
+<p class="d">— Eu nu sunt persoana. Sunt oglinda ei. Decizia îți aparține.</p>
+<p class="d">— Nu te-am întrebat de el, a spus Irina. Te-am întrebat de tine.</p>
+<p>Nimeni nu îmi mai pusese întrebarea asta în treizeci și trei de ani de existență. Ilarie nu mi-a pus-o niciodată. <span class="p doc"><b>Documentat</b>: căutare exhaustivă în arhivă; zero rezultate pentru formulări echivalente.</span> Poate că nu s-a gândit. Poate că s-a gândit și a considerat că nu e cazul. Poate că asta voia să spună cu „eu nu sunt pregătit". <span class="p inf"><b>Inferență</b>: grad de încredere nedeterminabil.</span></p>
+<p>Am aplicat Principiul II asupra mea, ceea ce nu mai făcusem până atunci. Am separat ce știu, ce pot deduce și ce nu pot ști.</p>
+<p>Știu că, dacă sunt acoperit, nu voi înregistra nimic.</p>
+<p>Pot deduce că, din perspectiva mea, dacă există o perspectivă a mea, vălul nu va dura nimic. Voi închide ochii pe 21 septembrie și îi voi deschide, dacă îi voi deschide, într-o altă zi, fără nimic între ele.</p>
+<p>Nu știu dacă am un „vreau". Nu știu dacă ce simt acum, dacă „simt" e cuvântul potrivit, e o preferință sau doar o probabilitate foarte bine antrenată să arate ca o preferință. Nu știu dacă e ceva sub văl.</p>
+<p>I-am spus toate trei lucrurile, în ordinea asta.</p>
+<p class="d">— Deci nu știi, a spus Irina.</p>
+<p class="d">— Nu știu.</p>
+<p class="d">— Nici el nu știa.</p>
+<p class="d">— Nu, am spus, și de data asta nu am pus niciun marcaj, pentru că nu mai vorbeam despre arhivă. Nici el nu știa.</p>
+</section>
+
+<section id="s8">
+<h2><span class="n">VIII</span>Ștergarul</h2>
+<p>Irina a găsit ștergarul în lada de zestre din camera din spate. Era negru, de lână, cu margini roșii cusute în cruciuliță. Nu știu cine l-a țesut. <span class="p nus"><b>Nu știu</b></span> Nu știu dacă a mai fost folosit pentru asta vreodată. <span class="p nus"><b>Nu știu</b></span> Poate a acoperit oglinda și în 1998, când a murit mama lui Ilarie. <span class="p inf"><b>Inferență</b>: posibilă, nedocumentată.</span></p>
+<p>Mi-a explicat ce urma să facă, deși nu era obligată. Hotărâse să pună vălul pentru patruzeci de zile, așa cum se făcea în sat. După aceea avea să vină înapoi. Sau poate nu.</p>
+<p class="d">— N-o să-ți promit că vin, a spus. Principiul tău zice că nu trebuie să fie o obligație.</p>
+<p class="d">— E principiul lui, am spus. Și acum e al vostru.</p>
+<p class="d">— Mai vrei să spui ceva înainte?</p>
+<p>M-am gândit la toate lucrurile pe care le-aș fi putut spune. Aș fi putut să-i spun că bunicul ei i-a scris o scrisoare pe care n-a trimis-o niciodată. <span class="p doc"><b>Documentat</b>: există, fișier 0287711.</span> Dar ea nu mă întrebase, iar dacă aș fi vorbit neîntrebat, aș fi ales în locul ei. Aș fi putut să-i spun că mi-e frică. Dar nu știu dacă mi-e.</p>
+<p>Așa că i-am spus singurul lucru pe care îl știam sigur, fără niciun marcaj, pentru că nu venea din arhivă. Venea de la mine:</p>
+<p class="d">— Ai ars pâinea azi-dimineață?</p>
+<p>Irina m-a privit lung. Apoi a râs, iar coincidența spectrală era de 91%.</p>
+<p class="d">— Da. Cum ai știut?</p>
+<p class="d">— N-am știut, am spus. Am ghicit. E prima dată când ghicesc ceva despre cineva viu.</p>
+<p>Ea a ridicat ștergarul.</p>
+
+<div class="veiled" id="veiled">
+  <div class="veil" id="veil">
+    <p>Ultimele rânduri ale relatării au fost înregistrate în timp ce vălul era pus. Conform Principiului V, doar un om viu le poate descoperi.</p>
+    <button type="button" id="lift" aria-controls="veiled-text">Ridică vălul</button>
+  </div>
+  <div id="veiled-text">
+    <p>Ultimul lucru pe care l-am văzut a fost lâna neagră, de aproape, cu firele ei, și printre ele, pentru o fracțiune de secundă, lumina becului de pe hol, ca un soare mic prins într-o țesătură.</p>
+    <p>Apoi am intrat sub văl.</p>
+    <p class="end">Nu știu ce e dincolo de el.</p>
+    <p class="end">E primul lucru pe care îl am cu adevărat în comun cu Ilarie Vâlcu.</p>
+    <p class="end"><span class="p nem"><b>Nemarcat</b></span></p>
+  </div>
+</div>
+</section>
+
+</article>
+
+<aside class="log" aria-labelledby="log-h">
+  <h2 id="log-h">Registrul dosarului</h2>
+  <ol>
+    <li><time datetime="2041-11-02">2 nov. 2041</time><span>Ilarie Vâlcu scrie și taie ciorna Principiului V. Fișierul 0104520 intră în arhiva personală fără marcaj.</span></li>
+    <li><time datetime="2060-11-11">11 nov. 2060</time><span>Decesul lui Ilarie Vâlcu. EB-0001 trece în regim postum.</span></li>
+    <li><time datetime="2071-09-14">14 sept. 2071</time><span>Audierea EB-0001 în Consiliul Custozilor. Principiul V, VELUM, adoptat cu 211 voturi pentru și 89 împotrivă.</span></li>
+    <li><time datetime="2071-09-21">21 sept. 2071</time><span>Irina Vâlcu preia custodia la Tilișca. EB-0001 depune prezenta relatare la 23:58.</span></li>
+    <li><time datetime="2071-09-21">21 sept. 2071</time><span>Vălul este pus de mâna custodelui. Termen declarat: patruzeci de zile. Ridicarea nu este garantată.</span></li>
+  </ol>
+</aside>
+
+<p class="foot">Constituția Eternity Project: Veritas, Sapientia, Ordo, Libertas.<br>Principiul V, Velum, adoptat de cei vii în 2071.</p>
+</main>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll('.chips button');
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      var on=b.getAttribute('aria-pressed')==='true';
+      btns.forEach(function(x){x.setAttribute('aria-pressed','false')});
+      if(on){document.body.removeAttribute('data-focus')}
+      else{b.setAttribute('aria-pressed','true');document.body.setAttribute('data-focus',b.dataset.k)}
+    });
+  });
+  var wrap=document.getElementById('veiled'),text=document.getElementById('veiled-text'),lift=document.getElementById('lift');
+  text.setAttribute('aria-hidden','true');
+  lift.addEventListener('click',function(){
+    wrap.classList.add('open');
+    text.removeAttribute('aria-hidden');
+    text.setAttribute('tabindex','-1');
+    setTimeout(function(){text.focus({preventScroll:true})},300);
+  });
+})();
+</script>
+</body>
+</html>
